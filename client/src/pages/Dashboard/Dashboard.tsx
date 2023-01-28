@@ -73,14 +73,12 @@ const Dashboard = () => {
   /****************************************/
 
   const [playerList, setPlayerList] = useState<PlayerListProps[]>([]);
-
   const[loading,setLoading] = useState<boolean>(false);
 
   const loadPlayerList = async () => {
     setLoading(true);
     try {
       const res = await getPlayerList();
-
       if (res) {
         setPlayerList(res.data);
         setLoading(false)
@@ -90,7 +88,6 @@ const Dashboard = () => {
         position: toast.POSITION.TOP_RIGHT,
       });
       setLoading(false)
-
     }
   };
 
@@ -111,8 +108,6 @@ const Dashboard = () => {
           </h6>
         </div>
       </CardLayout>
-
-
 
       {loading && "Loading your data. please wait..."}
 
