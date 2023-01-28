@@ -6,6 +6,9 @@ import signInPageStyle from "./SignIn.module.scss";
 import { UserRegistrationProps, userRegistration } from "../../services/API";
 
 const SignUp = () => {
+
+  let navigate = useNavigate();
+
   /****************************************/
   /*********User Registration *************/
   /****************************************/
@@ -29,6 +32,8 @@ const SignUp = () => {
         toast.success("You have Signed Up Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
+
+        navigate("/");
 
         setUserTeamName("");
         setUserEmail("");

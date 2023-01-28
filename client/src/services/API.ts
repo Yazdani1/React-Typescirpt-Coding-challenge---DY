@@ -25,3 +25,16 @@ export const userLogin = async (props: UserLoginProps) => {
   const res = await axios.post(API_URL + "/login", { ...props });
   return res;
 };
+
+
+
+/****************************************/
+/*********  Player List     *************/
+/****************************************/
+
+export const getPlayerList = async()=>{
+
+  const res = await axios.get(API_URL+"/get-player-list",headerConfig());
+  return res;
+
+}
