@@ -8,9 +8,10 @@ import { deleteUserAccount } from "../../services/API";
 
 interface UserListProps {
   user: UserProfileDetailsProps;
+  loadUserList:()=>void;
 }
 
-const UserList: FC<UserListProps> = ({ user }) => {
+const UserList: FC<UserListProps> = ({ user,loadUserList }) => {
   /****************************************/
   /**** Delete User Account     ***********/
   /****************************************/
@@ -24,6 +25,8 @@ const UserList: FC<UserListProps> = ({ user }) => {
         toast.success("User Account Deleted Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
+
+        loadUserList();
 
       }
 

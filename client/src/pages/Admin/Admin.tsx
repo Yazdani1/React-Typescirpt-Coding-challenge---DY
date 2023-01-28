@@ -52,7 +52,7 @@ const Admin = () => {
         </div>
 
         {allUserList &&
-          allUserList.map((user) => <UserList user={user} key={user._id} />)}
+          allUserList.map((user) => <UserList user={user} key={user._id} loadUserList={loadAllUserList}/>)}
       </CardLayout>
     </AdminPageLayout>
   );
