@@ -19,9 +19,13 @@ const SignIn = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const[loading,setLoading] = useState<boolean>(false);
+
+
   const onSubmitUserSignIn = async (e: any) => {
     e.preventDefault();
 
+    setLoading(true);
     try {
       const payload: UserLoginProps = {
         email: email,
@@ -34,6 +38,8 @@ const SignIn = () => {
         toast.success("You have Loged In Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
         });
+
+        setLoading(false);
 
         // save user info in local storage
         localStorage.setItem("tokenLogin", JSON.stringify(res.data));
@@ -58,6 +64,8 @@ const SignIn = () => {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
+      setLoading(false);
+
     }
   };
 
@@ -94,7 +102,7 @@ const SignIn = () => {
               className={signInPageStyle.signInButton}
               onClick={(e) => onSubmitUserSignIn(e)}
             >
-              Sign In
+              {loading ? "Loading..":"Sign In"}
             </button>
             <span className={signInPageStyle.signUpHereOption}>
               <Link

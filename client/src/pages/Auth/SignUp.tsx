@@ -16,8 +16,14 @@ const SignUp = () => {
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
 
+
+  const[loading,setLoading] = useState<boolean>(false);
+
+
   const onSubmitUserRegistration = async (e: any) => {
     e.preventDefault();
+
+    setLoading(true);
 
     try {
       const payload: UserRegistrationProps = {
@@ -35,6 +41,8 @@ const SignUp = () => {
 
         navigate("/");
 
+        setLoading(false);
+
         setUserTeamName("");
         setUserEmail("");
         setUserPassword("");
@@ -43,6 +51,8 @@ const SignUp = () => {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
+      setLoading(false);
+
     }
   };
 
@@ -89,7 +99,8 @@ const SignUp = () => {
               className={signInPageStyle.signInButton}
               onClick={(e) => onSubmitUserRegistration(e)}
             >
-              Sign Up
+                           {loading ? "Loading..":"Sign Up"}
+
             </button>
 
             <span className={signInPageStyle.signUpHereOption}>
