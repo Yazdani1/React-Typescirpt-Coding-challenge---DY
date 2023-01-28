@@ -38,3 +38,13 @@ export const getPlayerList = async()=>{
   return res;
 
 }
+
+export const deletePlayerList = async(id:string)=>{
+
+  const res = await axios.delete(API_URL+"/delete-player/"+id,headerConfig());
+
+  return res;
+
+}
+
+

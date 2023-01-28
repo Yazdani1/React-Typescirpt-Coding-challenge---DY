@@ -44,7 +44,7 @@ const Dashboard = () => {
       <CardLayout title="Player List" showAddIcon={true}>
         {playerList &&
           playerList.map((player) => (
-            <PlayerListCard player={player} key={player._id} />
+            <PlayerListCard player={player} key={player._id} loadPlayerList={loadPlayerList}/>
           ))}
       </CardLayout>
     </SubscriberPageLayout>
