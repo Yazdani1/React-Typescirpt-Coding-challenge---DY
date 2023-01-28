@@ -98,7 +98,7 @@ const Dashboard = () => {
   return (
     <SubscriberPageLayout>
       <CardLayout>
-        <h6>Team Details</h6>
+        <h4>Team Details</h4>
 
         <div className={style.teamInfo}>
           <h2>{userDetails.user?.teamname}</h2>
