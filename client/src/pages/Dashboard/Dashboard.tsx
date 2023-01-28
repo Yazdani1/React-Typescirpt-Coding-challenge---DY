@@ -8,7 +8,6 @@ import {
   getPlayerList,
   CreatePlayerListProps,
   ceatePlayerList,
-  
 } from "../../services/API";
 import { PlayerListProps } from "../../services/DataProvider";
 import CardLayout from "../../components/CardLayout/CardLayout";
@@ -75,17 +74,23 @@ const Dashboard = () => {
 
   const [playerList, setPlayerList] = useState<PlayerListProps[]>([]);
 
+  const[loading,setLoading] = useState<boolean>(false);
+
   const loadPlayerList = async () => {
+    setLoading(true);
     try {
       const res = await getPlayerList();
 
       if (res) {
         setPlayerList(res.data);
+        setLoading(false)
       }
     } catch (error: any) {
       toast.error(error.response && error.response.data.error, {
         position: toast.POSITION.TOP_RIGHT,
       });
+      setLoading(false)
+
     }
   };
 
@@ -106,20 +111,27 @@ const Dashboard = () => {
           </h6>
         </div>
       </CardLayout>
+
+
+
+      {loading && "Loading your data. please wait..."}
+
       <CardLayout
         title="Player List: "
         showAddIcon={true}
         playerCount={playerList.length}
         openModal={onOpenModal}
       >
-        {playerList &&
-          playerList.map((player) => (
-            <PlayerListCard
-              player={player}
-              key={player._id}
-              loadPlayerList={loadPlayerList}
-            />
-          ))}
+        {playerList.length === 0
+          ? (<h6 style={{textAlign:"center"}}>You did not add nay player yet</h6>)
+          : playerList &&
+            playerList.map((player) => (
+              <PlayerListCard
+                player={player}
+                key={player._id}
+                loadPlayerList={loadPlayerList}
+              />
+            ))}
       </CardLayout>
 
       <ModalBox

@@ -1,6 +1,6 @@
-export const API_URL ="http://localhost:8080/api"
+// export const API_URL ="http://localhost:8080/api"
 
-// export const API_URL ="https://video-stream-platform.vercel.app/api"
+export const API_URL ="https://coding-challenge-dy-yazdani1.vercel.app/api"
 
 
 export const headerConfig = () => {
