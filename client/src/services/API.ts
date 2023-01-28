@@ -74,3 +74,18 @@ export const deletePlayerList = async (id: string) => {
   );
   return res;
 };
+
+
+
+
+/****************************************/
+/*******  Delete User Account **********/
+/****************************************/
+
+
+export const deleteUserAccount = async(id:string)=>{
+
+  const res = await axios.delete(API_URL + "/delete-user/"+id,headerConfig());
+  return res;
+  
+}

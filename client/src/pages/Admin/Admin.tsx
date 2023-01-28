@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import AdminPageLayout from "../../layouts/AdminPageLayout";
 import CardLayout from "../../components/CardLayout/CardLayout";
-import { getAllUserList } from "../../services/API";
+import { getAllUserList,deleteUserAccount } from "../../services/API";
 import { UserProfileDetailsProps } from "../../services/DataProvider";
 import UserList from "./UserList";
 import style from "./UserList.module.scss";
@@ -28,6 +28,11 @@ const Admin = () => {
       });
     }
   };
+
+
+
+
+
 
   useEffect(() => {
     loadAllUserList();
