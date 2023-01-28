@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import moment from "moment";
 
 import style from "./Dashboard.module.scss";
 import SubscriberPageLayout from "../../layouts/SubscriberPageLayout";
@@ -38,13 +39,20 @@ const Dashboard = () => {
       <CardLayout>
         <h6>Team Details</h6>
 
-        <p>{userDetails.user?.teamname}</p>
-        <p>Member since: {userDetails.user?.date}</p>
+        <div className={style.teamInfo}>
+          <h2>{userDetails.user?.teamname}</h2>
+
+          <h6>Member since: {moment(userDetails.user?.date).format("MMM Do YY")} </h6>
+        </div>
       </CardLayout>
-      <CardLayout title="Player List" showAddIcon={true}>
+      <CardLayout title="Player List: " showAddIcon={true} playerCount={playerList.length}>
         {playerList &&
           playerList.map((player) => (
-            <PlayerListCard player={player} key={player._id} loadPlayerList={loadPlayerList}/>
+            <PlayerListCard
+              player={player}
+              key={player._id}
+              loadPlayerList={loadPlayerList}
+            />
           ))}
       </CardLayout>
     </SubscriberPageLayout>

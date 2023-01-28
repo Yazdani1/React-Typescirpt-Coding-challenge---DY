@@ -37,7 +37,7 @@ const Navbar = () => {
               to={"/dashboard"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              Expense Book
+              Dashboard
             </Link>
           </li>
 

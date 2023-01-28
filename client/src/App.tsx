@@ -6,7 +6,7 @@ import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import SubscriberSecureLayout from "./layouts/SubscriberSecureLayout";
-
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   return (
@@ -18,7 +18,6 @@ const App = () => {
 
           {/* Protected route for subscriber*/}
 
-
           <Route
             path="/dashboard"
             element={
@@ -28,12 +27,16 @@ const App = () => {
             }
           />
 
-
- 
+          <Route
+            path="/profile"
+            element={
+              <SubscriberSecureLayout>
+                <Profile />
+              </SubscriberSecureLayout>
+            }
+          />
 
           {/* Protected route for only admin*/}
-
-
         </Routes>
         <ToastContainer autoClose={8000} />
       </BrowserRouter>

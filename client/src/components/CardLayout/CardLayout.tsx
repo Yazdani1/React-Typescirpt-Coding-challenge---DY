@@ -7,6 +7,7 @@ interface CardLayoutProps {
   children?: ReactNode;
   openModal?: () => void;
   showAddIcon?: boolean;
+  playerCount?: number;
 }
 
 const CardLayout: FC<CardLayoutProps> = ({
@@ -14,12 +15,14 @@ const CardLayout: FC<CardLayoutProps> = ({
   title,
   openModal,
   showAddIcon,
+  playerCount
 }) => {
   return (
 
     <div className={cardStyle.cardContainer}>
       <div className={cardStyle.cardLayoutHeader}>
         <h5>{title}</h5>
+        <h5 style={{marginLeft:"7px"}}>{playerCount}</h5>
 
         {showAddIcon && (
           <p onClick={openModal}>
