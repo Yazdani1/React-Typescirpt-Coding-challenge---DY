@@ -1,4 +1,13 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixin.scss";
+
+
 
 .teamInfo{
     text-align: center;
+}
+
+.createPlayerInput{
+    @include inputFieldDesign();
+
 }

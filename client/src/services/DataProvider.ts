@@ -10,6 +10,7 @@ interface IBase {
 export interface UserProfileDetailsProps extends IBase {
   teamname: string;
   role: string;
+  email: string;
 }
 
 /****************************************/

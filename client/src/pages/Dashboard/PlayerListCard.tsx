@@ -34,9 +34,9 @@ const PlayerListCard: FC<PlayerListCardProps> = ({ player,loadPlayerList }) => {
 
   return (
     <div className={style.playerCardContainer}>
-      <h5>Name:{player.name}</h5>
-      <h5>Jersey:{player.jerseyNumber.toString()}</h5>
-      <button className="btn btn-danger" onClick={()=>deletePlayer()}>Delete</button>
+      <h5 style={{display:"flex",flex:"1"}}>Name:{player.name}</h5>
+      <h5 style={{display:"flex",flex:"1"}}>Jersey:{player.jerseyNumber.toString()}</h5>
+      <button className="btn btn-danger" onClick={()=>deletePlayer()} >Delete</button>
     </div>
   );
 };

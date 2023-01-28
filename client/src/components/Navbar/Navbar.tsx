@@ -37,6 +37,14 @@ const Navbar = () => {
               to={"/dashboard"}
               style={{ textDecoration: "none", color: "white" }}
             >
+              {state && state.user && state.user?.email}
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to={"/dashboard"}
+              style={{ textDecoration: "none", color: "white" }}
+            >
               Dashboard
             </Link>
           </li>
