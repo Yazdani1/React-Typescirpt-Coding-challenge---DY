@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "./App.css";
+import { UserProvider } from "./contextapi/UserContext";
+import SignIn from "./pages/Auth/SignIn";
+import SignUp from "./pages/Auth/SignUp";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import SubscriberSecureLayout from "./layouts/SubscriberSecureLayout";
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+
+          {/* Protected route for subscriber*/}
+
+
+          <Route
+            path="/dashboard"
+            element={
+              <SubscriberSecureLayout>
+                <Dashboard />
+              </SubscriberSecureLayout>
+            }
+          />
+
+
+ 
+
+          {/* Protected route for only admin*/}
+
+
+        </Routes>
+        <ToastContainer autoClose={8000} />
+      </BrowserRouter>
+    </UserProvider>
   );
-}
+};
 
 export default App;
